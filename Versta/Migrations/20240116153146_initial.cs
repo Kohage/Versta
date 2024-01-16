@@ -18,10 +18,10 @@ namespace Versta.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    SendCity = table.Column<string>(type: "text", nullable: true),
-                    SendAdress = table.Column<string>(type: "text", nullable: true),
-                    ArriveCity = table.Column<string>(type: "text", nullable: true),
-                    ArriveAdress = table.Column<string>(type: "text", nullable: true),
+                    SendCity = table.Column<string>(type: "text", nullable: false),
+                    SendAdress = table.Column<string>(type: "text", nullable: false),
+                    ArriveCity = table.Column<string>(type: "text", nullable: false),
+                    ArriveAdress = table.Column<string>(type: "text", nullable: false),
                     Weight = table.Column<double>(type: "double precision", nullable: false),
                     PickupDate = table.Column<DateOnly>(type: "date", nullable: false)
                 },
