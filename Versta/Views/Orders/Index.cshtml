@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Versta.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SendCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SendAdress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArriveCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArriveAdress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickupDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SendCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SendAdress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArriveCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArriveAdress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
