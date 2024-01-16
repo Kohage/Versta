@@ -30,15 +30,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.PickupDate)
             </th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <th>
+
+            <tr style="cursor:pointer" onclick="window.location.href = 'https://localhost:7287/Orders/Read/@item.Id';">
+
+            <td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </th>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SendCity)
             </td>
@@ -58,6 +60,7 @@
                 @Html.DisplayFor(modelItem => item.PickupDate)
             </td>
         </tr>
-}
+           
+        }
     </tbody>
 </table>
