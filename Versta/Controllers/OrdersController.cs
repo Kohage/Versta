@@ -61,7 +61,7 @@ namespace Versta.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(order);
+            return View();
         }
 
         // GET: Orders/Edit/5
