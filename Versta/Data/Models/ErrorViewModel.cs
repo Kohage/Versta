@@ -1,4 +1,4 @@
-namespace Versta.Models
+namespace Versta.Data.Models
 {
     public class ErrorViewModel
     {

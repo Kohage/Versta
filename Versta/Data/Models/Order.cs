@@ -1,7 +1,7 @@
 ﻿#nullable disable
 using System.ComponentModel.DataAnnotations;
 
-namespace Versta.Models
+namespace Versta.Data.Models
 {
     public class Order
     {
@@ -15,7 +15,7 @@ namespace Versta.Models
         [Required(ErrorMessage = "Поле обязательно")]
         public string ArriveAdress { get; set; }
         [Required(ErrorMessage = "Поле обязательно")]
-        public double Weight { get; set;}
+        public double Weight { get; set; }
         [Required(ErrorMessage = "Поле обязательно")]
         public DateOnly PickupDate { get; set; }
     }

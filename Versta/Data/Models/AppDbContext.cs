@@ -2,10 +2,14 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace Versta.Models
+namespace Versta.Data.Models
 {
     public class AppDbContext : DbContext
     {
+        public AppDbContext() { }
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+        : base(options)
+        { }
         protected readonly IConfiguration Configuration;
         public AppDbContext(IConfiguration configuration)
         {

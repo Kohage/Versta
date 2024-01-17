@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Microsoft.EntityFrameworkCore;
-using Versta.Models;
+using Versta.Data.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;

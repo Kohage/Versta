@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Versta.Models;
+using Versta.Data.Models;
+
 
 namespace Versta.Controllers
 {
