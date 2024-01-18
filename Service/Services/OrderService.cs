@@ -2,6 +2,7 @@
 using Versta.Data.Models;
 using Versta.Data.Repo;
 
+
 namespace Versta.Data.Services
 {
     public class OrderService : IOrderService
@@ -15,10 +16,13 @@ namespace Versta.Data.Services
         {
             return await _OrderRepo.SaveAsync(order);
         }
-        public IEnumerable<string> GetPropertyPatientNames()
+        public IEnumerable<Order> GetAllOrder()
         {
-            var type = typeof(Order).GetProperties();
-            return type.Select(prop => prop.Name).ToList();
+            return _OrderRepo.GetAll();
+        }
+        public Order GetOrder(int id)
+        {
+            return _OrderRepo.GetById(id);
         }
     }
 }

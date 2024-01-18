@@ -1,11 +1,12 @@
 ﻿
+using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Versta.Data.Models;
 
 namespace Versta.Data.Repo
 {
-   
-        public class Repo<T> : IRepo<T> where T : class
+
+    public class Repo<T> : IRepo<T> where T : BaseEntity
         {
             AppDbContext _context;
             DbSet<T> _dbSet;
@@ -22,9 +23,14 @@ namespace Versta.Data.Repo
                 return entity;
             }
 
-            public async Task<List<T>> GetAsync()
+            public IEnumerable<T> GetAll()
             {
-                return await _context.Set<T>().ToListAsync();
+                return _dbSet.AsEnumerable();
             }
-        }
+
+            public T GetById(int id)
+            {
+                return _dbSet.SingleOrDefault(s => s.Id == id);
+            }
+    }
 }

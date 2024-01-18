@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,85 +8,70 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.EntityFrameworkCore;
+using Versta.Data.Interfaces;
 using Versta.Data.Models;
-using static System.Net.Mime.MediaTypeNames;
+using System.Windows;
 
 namespace Versta.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly AppDbContext _context;
-
-        public OrdersController(AppDbContext context)
+        private readonly IOrderService _orderService;
+        public OrdersController(IOrderService orderService)
         {
-            _context = context;
+            _orderService = orderService;
         }
 
-        // GET: Orders
-        public async Task<IActionResult> Index()
+        public ViewResult Index()
         {
-            return View(await _context.Orders.ToListAsync());
-        }
-
-        // GET: Orders/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            try
             {
-                return NotFound();
+                var orsers = _orderService.GetAllOrder();
+            return View(orsers);
             }
-
-            var order = await _context.Orders
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                throw new Exception(ex.Message);
             }
-
-            return View(order);
         }
 
-        // GET: Orders/Create
-        public IActionResult Create()
+        public ViewResult Create()
         {
             return View();
         }
-
-        // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SendCity,SendAdress,ArriveCity,ArriveAdress,Weight,PickupDate")] Order order)
+        public ActionResult Create(Order order)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
+                _orderService.SaveOrderAsync(order);
+
+                TempData["msg"] = "<script>alert('Запись успешно сохранена');</script>";
                 return RedirectToAction(nameof(Create));
             }
-            return View();
-        }
-
-        // GET: Orders/Edit/5
-        public async Task<IActionResult> Read(int? id)
-        {
-            if (id == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                TempData["msg"] = "<script>alert('Ошибка');</script>";
+                throw new Exception(ex.Message);
             }
-
-            var order = await _context.Orders.FindAsync(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-            return View(order);
         }
-
-        private bool OrderExists(int id)
+        public ViewResult Read(int id)
         {
-            return _context.Orders.Any(e => e.Id == id);
+            try
+            {
+                var orsers = _orderService.GetOrder(id);
+            return View(orsers);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public string OpenModelPopup()
+        {
+            //can send some data also.  
+            return "<h1>This is Modal Popup Window</h1>";
         }
     }
 }

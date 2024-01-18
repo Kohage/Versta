@@ -1,18 +1,29 @@
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Microsoft.EntityFrameworkCore;
+using Versta.Data;
+using Versta.Data.Interfaces;
 using Versta.Data.Models;
+using Versta.Data.Repo;
+using Versta.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
-builder.Services.AddControllersWithViews();
+
 StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
 
+
 // Add services to the container.
+services.AddControllersWithViews();
 services.AddRazorPages();
 services.AddServerSideBlazor();
+services.AddMvc();
+services.AddRazorPages();
+services.AddScoped<IRepo<Order>, Repo<Order>>();
+services.AddScoped<IOrderService, OrderService>();
+
 
 services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql("WebApiDatabase"),
+    options.UseNpgsql("Host=localhost; Database=Versta; Username=postgres; Password=MyPassword;"),
     ServiceLifetime.Transient
 );
 

@@ -1,66 +1,42 @@
-﻿@model IEnumerable<Order>
+﻿@model IEnumerable<Order>;
+@using Versta.Data.Models;
+
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SendCity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SendAdress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ArriveCity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ArriveAdress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Weight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PickupDate)
-            </th>
-            
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-
-            <tr style="cursor:pointer" onclick="window.location.href = 'https://localhost:7287/Orders/Read/@item.Id';">
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SendCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SendAdress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArriveCity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArriveAdress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PickupDate)
-            </td>
-        </tr>
-           
-        }
-    </tbody>
-</table>
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">Users</div>
+    <div class="panel-body">
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>SendCity</th>
+                    <th>SendAdress</th>
+                    <th>ArriveCity</th>
+                    <th>ArriveAdress</th>
+                    <th>Weight</th>
+                    <th>PickupDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="cursor:pointer" onclick="window.location.href = 'https://localhost:7287/Orders/Read/@item.Id';">
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SendCity)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SendAdress)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ArriveCity)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ArriveAdress)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Weight)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PickupDate)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
