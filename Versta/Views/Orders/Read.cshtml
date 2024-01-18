@@ -5,38 +5,57 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@{
+    var item = Model;
+}
 <div class="top-buffer"></div>
 <div class="panel panel-primary">
-    <div class="panel-heading panel-head">Users</div>
     <div class="panel-body">
         <div class="top-buffer"></div>
-        <table class="table table-bordered table-striped table-condensed">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>SendCity</th>
-                    <th>SendAdress</th>
-                    <th>ArriveCity</th>
-                    <th>ArriveAdress</th>
-                    <th>Weight</th>
-                    <th>PickupDate</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{var item = Model;
-                
-                    <tr style="cursor:pointer" onclick="window.location.href = 'https://localhost:7287/Orders/Read/@item.Id';">
-                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                        <td>@Html.DisplayFor(modelItem => item.SendCity)</td>
-                        <td>@Html.DisplayFor(modelItem => item.SendAdress)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ArriveCity)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ArriveAdress)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Weight)</td>
-                        <td>@Html.DisplayFor(modelItem => item.PickupDate)</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SendCity)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SendCity)
+        </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SendAdress)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SendAdress)
+        </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ArriveCity)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ArriveCity)
+        </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ArriveAdress)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ArriveAdress)
+        </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PickupDate)
+        </dt>
+        <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PickupDate)
+        </dd>
+
+        </dl>
     </div>
 </div>
