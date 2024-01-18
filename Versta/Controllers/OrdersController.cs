@@ -26,8 +26,8 @@ namespace Versta.Controllers
         {
             try
             {
-                var orsers = _orderService.GetAllOrder();
-            return View(orsers);
+                var orsersModel = _orderService.GetAllOrder();
+            return View(orsersModel);
             }
             catch (Exception ex)
             {
@@ -41,11 +41,11 @@ namespace Versta.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Order order)
+        public ActionResult Create(OrderViewModel orderModel)
         {
             try
             {
-                _orderService.SaveOrderAsync(order);
+                _orderService.SaveOrderAsync(orderModel);
 
                 TempData["msg"] = "<script>alert('Запись успешно сохранена');</script>";
                 return RedirectToAction(nameof(Create));
@@ -60,8 +60,8 @@ namespace Versta.Controllers
         {
             try
             {
-                var orsers = _orderService.GetOrder(id);
-            return View(orsers);
+                var orserModel = _orderService.GetOrder(id);
+            return View(orserModel);
             }
             catch (Exception ex)
             {

@@ -18,7 +18,7 @@ services.AddRazorPages();
 services.AddServerSideBlazor();
 services.AddMvc();
 services.AddRazorPages();
-services.AddScoped<IRepo<Order>, Repo<Order>>();
+services.AddScoped<IRepo<OrderViewModel>, Repo<OrderViewModel>>();
 services.AddScoped<IOrderService, OrderService>();
 
 

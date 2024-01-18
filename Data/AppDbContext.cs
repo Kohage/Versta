@@ -22,6 +22,6 @@ namespace Versta.Data
                 
             }
         }
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderViewModel> Orders { get; set; }
     }
 }

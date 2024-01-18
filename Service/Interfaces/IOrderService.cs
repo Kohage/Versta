@@ -6,8 +6,8 @@ namespace Versta.Data.Interfaces
 {
     public interface IOrderService
     {
-        Task<Order> SaveOrderAsync(Order order);
-        IEnumerable<Order> GetAllOrder();
-        Order GetOrder(int id);
+        Task<OrderViewModel> SaveOrderAsync(OrderViewModel orderModel);
+        IEnumerable<OrderViewModel> GetAllOrder();
+        OrderViewModel GetOrder(int id);
     }
 }

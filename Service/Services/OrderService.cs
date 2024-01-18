@@ -7,20 +7,20 @@ namespace Versta.Data.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly IRepo<Order> _OrderRepo = null!;
-        public OrderService(IRepo<Order> repo)
+        private readonly IRepo<OrderViewModel> _OrderRepo = null!;
+        public OrderService(IRepo<OrderViewModel> repo)
         {
             _OrderRepo = repo;
         }
-        public async Task<Order> SaveOrderAsync(Order order)
+        public async Task<OrderViewModel> SaveOrderAsync(OrderViewModel orderModel)
         {
-            return await _OrderRepo.SaveAsync(order);
+            return await _OrderRepo.SaveAsync(orderModel);
         }
-        public IEnumerable<Order> GetAllOrder()
+        public IEnumerable<OrderViewModel> GetAllOrder()
         {
             return _OrderRepo.GetAll();
         }
-        public Order GetOrder(int id)
+        public OrderViewModel GetOrder(int id)
         {
             return _OrderRepo.GetById(id);
         }
